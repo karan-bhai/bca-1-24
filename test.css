@@ -1,0 +1,134 @@
+/* General resets */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background: linear-gradient(to bottom left, #33ccff 0%, #0066cc 100%);
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    height: 10vh;
+    background: #161A42;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    color: #fff;
+}
+
+.nav_item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav_item a {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+}
+
+.mobilmenu {
+    display: none; /* Hidden on larger screens */
+}
+
+/* Subject Section */
+.sub_section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.sub {
+    max-width: 30%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.sub img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sub button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav_item {
+        width: 60%;
+    }
+
+    .sub {
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav_item {
+        width: 80%;
+    }
+
+    .sub {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* Mobile styles */
+    #CNB_1 {
+        display: none;
+    }
+
+    .mobilmenu {
+        display: block; /* Show mobile menu */
+    }
+
+    .mobileMenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #161A42;
+    }
+
+    .mobileMenu a {
+        padding: 10px;
+        margin: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .sub_section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sub {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}

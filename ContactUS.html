@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact US</title>
+    <link rel="stylesheet" href="style02.css">
+</head>
+<body>
+    <div class="full_container">
+        <div class="sub_container">
+            <h3>Contact US</h3>
+            <form name="google-sheet" method="post">
+                <div class="fileds">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="fileds">
+                    <label>Email</label>
+                    <input type="email" name="eamil" required>
+                </div>
+
+                <div class="fileds">
+                    <label>Contact Number</label>
+                    <input type="text" name="Contact_num" placeholder="optional">
+                </div>
+
+                <div class="fileds">
+                    <label>Service</label>
+                    <select name="service_problem">
+                        <option value="no option selected" >Select Service / Problem</option>
+                        <option value="UI is not looking well" >UI is not looking well</option> 
+                        <option value="UPload my notes" >Upload my notes on website</option>
+                        <option value="Something else" >Something else</option>
+                        <option value="new idea given" >Give Idea</option>
+                        <option value="how to use as app" >How to use as App</option>
+                      </select>
+                </div>
+
+                <div class="fileds">
+                    <label>Message</label>
+                    <textarea name="message" rows="4" placeholder="Explain your problem"></textarea>
+                </div>
+                    <div class="resolution">
+                        <label>Your Device Screen Size</label>
+                        <h4>height: <input type="text" name="height" id="height" value="0">px</h4>
+                        <h4>width:  <input type="text" name="width"  id="width" value="0">px</h4>
+                    </div>
+    <hr>
+
+                <div class="fileds btn">
+                    <button type="reset">Clear</button>
+                    <button type="submit" id="Sendingbtn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+
+        
+        let Sendingbtn = document.querySelector('#Sendingbtn');
+        let Screen_height = document.querySelector('#height');
+        let Screen_width = document.querySelector('#width');
+        let screenHeight = screen.height;
+        let screenwidth = screen.width;
+
+        height.value=screenHeight;
+        width.value=screenwidth;
+
+
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxyhHWhcLxnH_oWfdSy1peBk1Nk6PhnW3AIQUpWYouy-CzwlhiIjotZoXrCE9sMuo1hDg/exec'
+            const form = document.forms['google-sheet']
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              Sendingbtn.innerHTML="Sending...."
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {Sendingbtn.innerHTML="Submitted" , alert('message sened successfully')})
+                .catch(error => console.error('Error!', error.message))
+            })
+          
+    </script>
+
+</body>
+</html>
+
+<!-- url -->
+<!-- https://script.google.com/macros/s/AKfycbxyhHWhcLxnH_oWfdSy1peBk1Nk6PhnW3AIQUpWYouy-CzwlhiIjotZoXrCE9sMuo1hDg/exec -->
+
+<!-- deployment id -->
+<!-- AKfycbxyhHWhcLxnH_oWfdSy1peBk1Nk6PhnW3AIQUpWYouy-CzwlhiIjotZoXrCE9sMuo1hDg -->

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+        font-family: 'poppins',sans-serif;
+        box-sizing: border-box;
+        }
+     .container{
+        width: 100%;
+        height: 100vh;
+        background: rgb(58,160,180);
+        background: linear-gradient(90deg, rgba(58,160,180,1) 28%, rgba(29,188,253,1) 50%, rgba(69,225,252,1) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     }
+
+     .sub_container{
+        border: 1px solid;
+        width: 30vw;
+        /* height: 40vh; */
+        background: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+     }
+     .sub_container h2{
+        text-align: center;
+        padding: 10px 0;
+        background: #2876eb;
+        color: #fff;
+        border-bottom: 1px solid;
+     }
+
+     .input_fields{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 10% 0;
+     }
+
+     .input_fields input{
+        height: 35px;
+        width: 90%;
+        margin: 15px 0;
+        padding-left: 10px;
+        font-size: 18px;
+     }
+.btn{
+   /* border: 1px solid; */
+   display: flex;
+   justify-content: center;
+   height: 50px;
+   margin-bottom: 30px;
+   align-items: center;
+}
+.btn button{
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #2876eb;
+    cursor: pointer;
+    height: 35px;
+    padding: 5px 40px;
+}
+
+/* -------Css for samll screen size ------ */
+
+@media screen and (max-width: 600px) {
+    .container{
+        align-items: start;
+    }
+    .sub_container{
+        margin-top: 40%;
+        width: 80%;
+    }
+
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sub_container">
+            <h2>Admin Login</h2>
+            <form >
+                <div class="input_fields">
+                    <input type="text" id="user_name" placeholder="Enter user Name" required>
+                    <input type="password" id="password" placeholder="Enter password" required >
+                </div>
+                <div class="btn">
+                    <button id="login_btn" type="submit" onclick="login()">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Javascript for admin panel -->
+
+    <script>
+        // let userName = document.getElementById('user_name');
+        // let passWord = document.getElementById('password');
+        // function login(){
+        //  if (userName.value=="AdminLogin2024.750" && passWord.value==="BCAadmin750") {
+        //        alert("correct password and username")
+        //     //    alert("Invalid username and password");
+        //  }else if (userName.value=="" || passWord.value==""){
+        //     alert("Please fill the All fields")
+        //  }
+
+        //  else{
+        //     alert("Invalid username and password");
+        //  }   
+        // }
+    </script>
+
+    <script>
+        function _0x1926(_0x53cf5a,_0x4b02de){const _0x3b8555=_0x3b85();return _0x1926=function(_0x19263e,_0x2f0401){_0x19263e=_0x19263e-0x64;let _0x3ba116=_0x3b8555[_0x19263e];return _0x3ba116;},_0x1926(_0x53cf5a,_0x4b02de);}const _0xd7ca79=_0x1926;(function(_0x275c9b,_0x1c364){const _0xb56a5a=_0x1926,_0x5e45b0=_0x275c9b();while(!![]){try{const _0x41655a=-parseInt(_0xb56a5a(0x6d))/0x1*(parseInt(_0xb56a5a(0x6b))/0x2)+-parseInt(_0xb56a5a(0x65))/0x3+parseInt(_0xb56a5a(0x6f))/0x4+-parseInt(_0xb56a5a(0x6e))/0x5*(parseInt(_0xb56a5a(0x71))/0x6)+-parseInt(_0xb56a5a(0x72))/0x7*(parseInt(_0xb56a5a(0x64))/0x8)+parseInt(_0xb56a5a(0x69))/0x9*(-parseInt(_0xb56a5a(0x66))/0xa)+parseInt(_0xb56a5a(0x70))/0xb;if(_0x41655a===_0x1c364)break;else _0x5e45b0['push'](_0x5e45b0['shift']());}catch(_0xda86de){_0x5e45b0['push'](_0x5e45b0['shift']());}}}(_0x3b85,0x8ddf4));function _0x3b85(){const _0x21240c=['value','1JWatJF','205410XoWajT','1488760jpvcay','30957179rflAWs','114GSLeMc','2745435INyBpC','8kYZAby','2590110ysKuhz','185450tBNzpk','password','Please\x20fill\x20the\x20All\x20fields','153pkMWYf','getElementById','507946llZMXd'];_0x3b85=function(){return _0x21240c;};return _0x3b85();}let userName=document[_0xd7ca79(0x6a)]('user_name'),passWord=document['getElementById'](_0xd7ca79(0x67));function login(){const _0x184e0e=_0xd7ca79;if(userName['value']=='AdminLogin2024.750'&&passWord[_0x184e0e(0x6c)]==='BCAadmin750')alert('correct\x20password\x20and\x20username');else userName['value']==''||passWord[_0x184e0e(0x6c)]==''?alert(_0x184e0e(0x68)):alert('Invalid\x20username\x20and\x20password');}
+    </script>
+</body>
+</html>

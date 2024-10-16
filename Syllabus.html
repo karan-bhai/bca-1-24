@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+        font-family: 'poppins',sans-serif;
+        box-sizing: border-box;
+        }
+        
+        #pdf-render {
+            width: 100%;
+            height: 96vh;
+        }
+
+        .control-btn{
+            display: flex;
+            flex-direction: column;
+            /* border: 3px solid ; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #controls {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+
+        }
+        #controls button{
+            padding: 8px;
+            background: darkcyan;
+            outline: none;
+            border: none;
+            font-style: italic;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        #controls .showpgno{
+            border: 2px solid silver;
+            padding: 5px;
+            font-weight: bolder;
+        }
+        a{
+             width: 40%;
+             /* border: 1px solid black; */
+             padding: 10px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             text-decoration: none;
+             cursor: pointer;
+        }
+        a button{
+            border-radius: 5px;
+            padding: 10px;
+            width: 99%;
+            font-size: 20px;
+            background: darkcyan;
+            outline: none;
+            border: none;
+            font-style: italic;
+            color: #fff;
+        }
+
+        /*   mobile screen syntax */
+
+        @media only screen and (max-width: 600px) {
+           a{
+            width: 90%;
+           }
+           a button{
+            padding: 8px;
+            font-size: 16px;
+           }
+}
+    </style>
+</head>
+<body>
+
+<div id="pdf-container">
+    <canvas id="pdf-render"></canvas>
+</div>
+
+<div class="control-btn">
+
+    <div id="controls">
+        <button id="prev-page">Previous Page</button>
+        <div class="showpgno">
+            <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+        </div>
+        <button id="next-page">Next Page</button>
+        <div class="btn">
+        </div>
+    </div>
+    
+    <a href="SyllabusPDF.pdf" download="Syllabus Complete.pdf"><button>Download PDF</button></a>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<!-- <script src="pdf-viewer.js"></script> -->
+
+<script>
+
+let pdfDoc = null,
+    pageNum = 1,
+    pageIsRendering = false,
+    pageNumIsPending = null;
+
+const scale = 1.5,
+    canvas = document.getElementById('pdf-render'),
+    ctx = canvas.getContext('2d');
+
+// Load the PDF
+const url = 'SyllabusPDF.pdf'; // Use your own path or a local file
+
+pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+    pdfDoc = pdfDoc_;
+    document.getElementById('page-count').textContent = pdfDoc.numPages;
+
+    // Render the first page
+    renderPage(pageNum);
+});
+
+// Render the page
+const renderPage = num => {
+    pageIsRendering = true;
+
+    // Get the page
+    pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderCtx = {
+            canvasContext: ctx,
+            viewport
+        };
+
+        page.render(renderCtx).promise.then(() => {
+            pageIsRendering = false;
+
+            if (pageNumIsPending !== null) {
+                renderPage(pageNumIsPending);
+                pageNumIsPending = null;
+            }
+        });
+
+        // Output current page
+        document.getElementById('page-num').textContent = num;
+    });
+};
+
+// Check for pages rendering
+const queueRenderPage = num => {
+    if (pageIsRendering) {
+        pageNumIsPending = num;
+    } else {
+        renderPage(num);
+    }
+};
+
+// Show previous page
+document.getElementById('prev-page').addEventListener('click', () => {
+    if (pageNum <= 1) {
+        return;
+    }
+    pageNum--;
+    queueRenderPage(pageNum);
+});
+
+// Show next page
+document.getElementById('next-page').addEventListener('click', () => {
+    if (pageNum >= pdfDoc.numPages) {
+        return;
+    }
+    pageNum++;
+    queueRenderPage(pageNum);
+});
+
+
+</script>
+
+</body>
+</html>
